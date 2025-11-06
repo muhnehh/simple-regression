@@ -20,6 +20,9 @@ wheels/
 .installed.cfg
 *.egg
 
+# Generated output files
+india_population_prediction.png
+
 # Virtual environments
 venv/
 ENV/
