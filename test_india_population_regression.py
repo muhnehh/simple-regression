@@ -10,14 +10,15 @@ from india_population_regression import (
 )
 
 
+# Test data constants
+TEST_YEARS = np.array([1960, 1970, 1980, 1990, 2000, 2010, 2020]).reshape(-1, 1)
+TEST_POPULATION = np.array([450.5, 555.2, 698.9, 873.3, 1056.6, 1234.3, 1380.0])
+
+
 def test_regression_model():
     """Test that the regression model trains correctly."""
-    # Sample data
-    X = np.array([1960, 1970, 1980, 1990, 2000, 2010, 2020]).reshape(-1, 1)
-    y = np.array([450.5, 555.2, 698.9, 873.3, 1056.6, 1234.3, 1380.0])
-    
     # Train model
-    model = train_regression_model(X, y)
+    model = train_regression_model(TEST_YEARS, TEST_POPULATION)
     
     # Check that model has been trained
     assert model is not None
@@ -29,12 +30,8 @@ def test_regression_model():
 
 def test_predictions():
     """Test that predictions are reasonable."""
-    # Sample data
-    X = np.array([1960, 1970, 1980, 1990, 2000, 2010, 2020]).reshape(-1, 1)
-    y = np.array([450.5, 555.2, 698.9, 873.3, 1056.6, 1234.3, 1380.0])
-    
     # Train model
-    model = train_regression_model(X, y)
+    model = train_regression_model(TEST_YEARS, TEST_POPULATION)
     
     # Make predictions
     future_years = np.array([2030, 2040, 2050]).reshape(-1, 1)
@@ -66,14 +63,10 @@ def test_metrics():
 
 def test_model_performance():
     """Test that the model achieves good performance on historical data."""
-    # Historical data
-    X = np.array([1960, 1970, 1980, 1990, 2000, 2010, 2020]).reshape(-1, 1)
-    y = np.array([450.5, 555.2, 698.9, 873.3, 1056.6, 1234.3, 1380.0])
-    
     # Train and evaluate
-    model = train_regression_model(X, y)
-    y_pred = model.predict(X)
-    r2, rmse = calculate_metrics(y, y_pred)
+    model = train_regression_model(TEST_YEARS, TEST_POPULATION)
+    y_pred = model.predict(TEST_YEARS)
+    r2, rmse = calculate_metrics(TEST_POPULATION, y_pred)
     
     # Model should have high R² (> 0.95) for linear trend
     assert r2 > 0.95, f"R² score {r2} is too low"

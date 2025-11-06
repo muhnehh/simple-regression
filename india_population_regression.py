@@ -77,15 +77,15 @@ def visualize_results(X_train, y_train, X_future, y_future_pred, model):
     plt.figure(figsize=(12, 6))
     
     # Plot historical data
-    plt.scatter(X_train, y_train, color='blue', s=100, alpha=0.6, label='Historical Data')
+    plt.scatter(X_train.flatten(), y_train, color='blue', s=100, alpha=0.6, label='Historical Data')
     
     # Plot regression line for historical period
     X_line = np.linspace(X_train.min(), X_future.max(), 100).reshape(-1, 1)
     y_line = model.predict(X_line)
-    plt.plot(X_line, y_line, 'r--', linewidth=2, label='Regression Line')
+    plt.plot(X_line.flatten(), y_line, 'r--', linewidth=2, label='Regression Line')
     
     # Plot predictions
-    plt.scatter(X_future, y_future_pred, color='green', s=100, alpha=0.6, 
+    plt.scatter(X_future.flatten(), y_future_pred, color='green', s=100, alpha=0.6, 
                 marker='^', label='Predicted Data')
     
     plt.xlabel('Year', fontsize=12)
