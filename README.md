@@ -153,6 +153,11 @@ future_df.to_csv("outputs/predictions_2025_2030.csv", index=False)
 ### Figure 1 — India Population Regression & Prediction
 Saved to: `outputs/population_regression_plot.png`
 
+<img width="825" height="495" alt="image" src="https://github.com/user-attachments/assets/af0566e6-755f-4abf-ab78-e20744369b6f" />
+
+<img width="761" height="570" alt="image" src="https://github.com/user-attachments/assets/f227806b-dcf2-4ec0-a9d2-42a04ffa35e5" />
+
+
 ### Table — Predicted Values (2025–2030)
 
 | Year | Predicted Population | Growth Rate (%) |
